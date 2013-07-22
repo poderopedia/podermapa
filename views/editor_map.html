@@ -1,0 +1,166 @@
+{{url='http://'+request.env.http_host+URL(request.controller,request.function,args=request.args)}}
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]><html class="ie ie6 ie-lte9 ie-lte8 ie-lte7 no-js" lang="{{=T.accepted_language or 'es'}}"> <![endif]-->
+<!--[if IE 7]><html class="ie ie7 ie-lte9 ie-lte8 ie-lte7 no-js" lang="{{=T.accepted_language or 'es'}}"> <![endif]-->
+<!--[if IE 8]><html class="ie ie8 ie-lte9 ie-lte8 no-js" lang="{{=T.accepted_language or 'es'}}"> <![endif]-->
+<!--[if IE 9]><html class="ie9 ie-lte9 no-js" lang="{{=T.accepted_language or 'es'}}"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{=T.accepted_language or 'es'}}"> <!--<![endif]-->
+<html lang="{{=T.accepted_language or 'es'}}">
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"><![endif]-->
+
+    <title>{{=response.title or request.application}}</title>
+
+    <link rel="icon" type="image/x-icon" href="{{=URL('static','img/favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{=URL('static','img/favicon.ico')}}" />
+
+<!-- other head content -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        var pluginUrl =
+                '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+        _gaq.push(['_setAccount', 'UA-34219926-1']);
+        _gaq.push(['_setDomainName', 'poderopedia.org']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    <!-- end other head content -->
+
+    <!-- styles -->
+
+    <link rel="stylesheet" href="{{ =URL('static','lib/ui-smoothness/jquery-ui-1.8.22.css') }}" />
+    <link rel="stylesheet/less" href="{{ =URL('static','css/structure.less') }}" />
+    <!-- /styles -->
+
+    <!-- scripts -->
+
+
+    <script src="{{ =URL('static','js/less-1.3.0.min.js') }}"></script>
+
+
+
+    <!-- include stylesheets -->
+  {{
+      response.files.append(URL('static','css/web2py.css'))
+      response.files.append(URL('static','css/bootstrap.css'))
+
+      response.files.append(URL('static','css/web2py_bootstrap.css'))
+  }}
+
+  {{include 'web2py_ajax.html'}}
+  <script src="{{ =URL('static','js/jquery-ui-1.8.22.min.js') }}"></script>
+
+</head>
+
+    
+    <body class="" id="maparelacionescompleto">
+        <!-- header -->
+        <header>
+
+            <!-- top -->
+            <div class="container">
+                <h1 class="logo">
+                    <a href="{{=URL('default','index')}}">Poderopedia</a>
+                </h1>
+
+                {{block header}}
+                
+                {{end}}
+
+				<!-- about -->    
+                <div class="social">
+                    <ul>
+						<li>
+							<!--Facebook-->
+							<div id="fb-root"></div>
+							<script>(function(d, s, id) {
+  								var js, fjs = d.getElementsByTagName(s)[0];
+  								if (d.getElementById(id)) return;
+  								js = d.createElement(s); js.id = id;
+  								js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+  								fjs.parentNode.insertBefore(js, fjs);
+							}(document, 'script', 'facebook-jssdk'));</script>
+        					<fb:like href="{{=url}}" send="false" layout="button_count" width="160" show_faces="false" font="verdana"></fb:like>
+						</li>
+						<li>
+							<!--twitter-->
+							<a href="https://twitter.com/share" class="twitter-share-button" data-lang="es" data-size="76" data-count="horizontal">Twittear</a>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+						</li>
+						<li>
+									<a href="http://pinterest.com/pin/create/button/?url={{=url}}&media=http%3A%2F%2Fpassets-ec.pinterest.com%2Fimages%2Fabout%2Flogos%2FPinterest_Logo.png&description={{=url}} " class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+					
+							<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+						</li>
+                        {{block imprimir}}
+                                                
+                        {{end}}
+					</ul>
+                </div>
+				<!-- /about -->
+
+            </div>
+            <!-- /top -->
+
+        </header>
+        <!-- /header -->
+        
+        <!-- container -->
+        <div id="content" class="container-fluid">
+
+	
+
+
+		<!-- inicio contenido -->
+		{{include}}
+		<!-- fin contenido -->
+
+
+
+</div>
+<!-- /container --> 
+
+
+<!--Fin Sugerir Conexion--> 
+
+
+<!-- inlineScripts -->
+
+       <script>
+
+
+
+
+            if($('a.media').length > 0){
+                $('a.media').media({width:1005, height:688});
+            }
+            
+
+            
+            /*
+            * Etc.
+            */
+
+        </script>
+        <!-- /globalScripts -->
+<!-- The javascript =============================================
+(Placed at the end of the document so the pages load faster) -->
+<script src="{{=URL('static','js/bootstrap.js')}}"></script>
+<script src="{{=URL('static','js/web2py_bootstrap.js')}}"></script>
+<!--[if lt IE 7 ]>
+<script src="{{=URL('static','js/dd_belatedpng.js')}}"></script>
+<script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+<![endif]-->
+</body>
+</html>
