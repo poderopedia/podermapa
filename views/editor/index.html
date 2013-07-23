@@ -101,6 +101,7 @@
     <button class="btn zoom-out" data-toggle="tooltip" title="Zoom Out" data-original-title="zoom out"><i class="icon-minus"></i></button>
     <button class="btn zoom-reset" data-toggle="tooltip" title="Reset" data-original-title="reset zoom"><i class="icon-refresh"></i></button>
     <a href="#Lightbox_loadProfile" class="btn" id="loadProfileButton" data-toggle="modal"><b>Cargar Perfil</b></a>
+    <a href="#Lightbox_addNode" class="btn" id="addNodeButton" data-toggle="modal"><b>Agregar Nodo</b></a>
 </div>
 
 <center>
@@ -114,6 +115,9 @@
             $('#loadProfileButton').click(function() {
                 web2py_component("{{=URL('entity','new.load')}}","loadProfile");
             });
+            $('#addNodeButton').click(function() {
+                web2py_component("{{=URL('entity','node_add.load')}}","addNode");
+            });
 </script>
 
 <!--Lightbox_Load Profile -->
@@ -123,6 +127,17 @@
       </div>
       <div class="modal-body">
         <div id="loadProfile"></div>
+    </div>
+</div>
+<!--Fin AddNode-->
+
+<!--Lightbox_Load Profile -->
+<div class="modal hide fade" id="Lightbox_addNode">
+<div class="modal-header clearfix">
+            <button type="button" class="close" data-dismiss="modal">Cerrar</button>
+      </div>
+      <div class="modal-body">
+        <div id="addNode"></div>
     </div>
 </div>
 <!--Fin AddNode-->

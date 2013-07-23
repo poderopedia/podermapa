@@ -29,7 +29,9 @@ def search():
 
     return dict(result=html)
 
+@service.json
 def get_connection():
+    response.view='generic.json'
     from poderopedia import poderopedia
     entity=request.args(0)
     id=request.args(1) or None
@@ -39,4 +41,14 @@ def get_connection():
         api = poderopedia(user_key=user_key)
         result = api.get_connections(entity=entity,id=id)
 
-    return dict(result=result)
+    return result
+
+
+def childnodes():
+    idx=request.args(0)
+    json={}
+    if idx[0]=='P':
+        redirect(URL('editor','get_connection',args=['persona',int(idx[1:])]))
+    elif idx[0]=='O':
+        redirect(URL('editor','get_connection',args=['organizacion',int(idx[1:])]))
+    return locals()

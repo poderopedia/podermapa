@@ -638,7 +638,7 @@ Network = () ->
 
 
   loadJson = (d,i) ->
-    d3.json '/visualizacion/call/json/childnodes/'+d.id, (data) ->
+    d3.json '/powermapa/editor/childnodes/'+d.id, (data) ->
       log(data.links)
       #newData = setupData(data)
       #log("json",newData.links)
